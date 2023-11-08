@@ -17,6 +17,7 @@ const di = [0,0,-1,1];
 const dj = [-1,1,0,0];
 
 let check = Array(n).fill(-1).map(() => Array(n).fill(-1));
+let check_bool = Array(n).fill(false).map(() => Array(n).fill(false));
 
 const bfs = (i,j) => {
     let que = [];
@@ -37,6 +38,7 @@ const bfs = (i,j) => {
             
             if(grid[ni][nj] === 1 && check[ni][nj] === -1){
                 check[ni][nj] = check[ti][tj] + 1;
+                check_bool[ni][nj] = true;
                 que.push([ni, nj]);
             }
         }
@@ -50,6 +52,19 @@ for(let i=0;i<n;i++){
         }
     }
 }
+
+for(let i=0;i<n;i++){
+    for(let j=0;j<n;j++){
+        if(grid[i][j] === 0){
+            check[i][j] = -1;
+        }
+        else if(grid[i][j] === 1 && check_bool[i][j] === false){
+            check[i][j] = -2;
+        }
+    }
+}
+
+
 
 for(let i=0; i<n;i++){
     let row = "";
