@@ -7,8 +7,8 @@ let memo = Array(1001).fill(0);
 memo[2] = 1;
 memo[3] = 1;
 
-for(let i=4;i <=n;i++){
-    memo[i] = memo[i-2] + memo[i-3];
+for(let i=4;i<=1001;i++){
+    memo[i] = (memo[i-2]%10007 + memo[i-3]%10007)%10007;
 }
 
 console.log(memo[n]);
