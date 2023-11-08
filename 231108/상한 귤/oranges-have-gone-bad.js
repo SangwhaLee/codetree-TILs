@@ -36,7 +36,7 @@ const bfs = (i,j) => {
             if(ni < 0 || ni >= n || nj < 0 || nj >= n)
                 continue;
             
-            if(grid[ni][nj] === 1 && check[ni][nj] === -1){
+            if(grid[ni][nj] === 1 && (check[ti][tj] + 1 < check[ni][nj] || check[ni][nj] === -1)){
                 check[ni][nj] = check[ti][tj] + 1;
                 check_bool[ni][nj] = true;
                 que.push([ni, nj]);
