@@ -9,7 +9,7 @@ dp[1] = 1;
 dp[2] = 3;
 
 for(let i=3;i<=1000;i++){
-    dp[i] = (dp[i-1]%MOD + (dp[i-2]*3)%MOD)%MOD;
+    dp[i] = (dp[i-1]%MOD + (dp[i-2]*2)%MOD)%MOD;
 }
 
 console.log(dp[n]);
