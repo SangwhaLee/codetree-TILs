@@ -7,7 +7,7 @@ let memo = Array(1001).fill(0);
 memo[1] = 2;
 
 for(let i=2;i<=1000;i++){
-    memo[i] = (memo[i-1]*3 + 1)%1000000007;
+    memo[i] = (memo[i-1]*3 + 1);
 }
 
-console.log(memo[n]);
+console.log(memo[n]%1000000007);
