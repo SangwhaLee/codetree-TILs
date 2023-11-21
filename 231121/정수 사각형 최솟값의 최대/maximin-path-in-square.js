@@ -17,16 +17,8 @@ for(let i=1;i<n;i++){
 
 for(let i=1;i<n;i++){
     for(let j=1;j<n;j++){
-        dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1], dp[i][j]);
+        dp[i][j] = Math.min(Math.max(dp[i-1][j], dp[i][j-1]), dp[i][j]);
     }
 }
 
-let maxNum = -1;
-
-for(let i=1;i<n;i++){
-    for(let j=1;j<n;j++){
-        if(dp[i][j] > maxNum) maxNum=dp[i][j];
-    }
-}
-
-console.log(maxNum);
+console.log(dp[n-1][n-1]);
