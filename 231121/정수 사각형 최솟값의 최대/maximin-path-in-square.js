@@ -12,7 +12,7 @@ for(let i=1;i<input.length;i++){
 
 for(let i=1;i<n;i++){
     dp[i][0] = Math.min(dp[i-1][0], dp[i][0]);
-    dp[0][i] = Math.min(dp[0][i-1], dp[0][i-1]); 
+    dp[0][i] = Math.min(dp[0][i-1], dp[0][i]); 
 }
 
 for(let i=1;i<n;i++){
