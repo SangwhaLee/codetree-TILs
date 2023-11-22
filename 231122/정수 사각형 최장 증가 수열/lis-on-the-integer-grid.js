@@ -24,9 +24,7 @@ for(let i=0;i<n;i++){
     }
 }
 
-cells.sort((a,b) => {
-    if (a[0] > b[0]) return -1;
-});
+cells.sort((a, b) => a[0] - b[0]);
 
 for(let tmp of cells){
     const di = [-1,1,0,0];
