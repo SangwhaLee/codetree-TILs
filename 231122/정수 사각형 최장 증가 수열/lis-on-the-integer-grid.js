@@ -10,51 +10,43 @@ for(let i=1;i<input.length;i++){
     arr.push(input[i].split(" ").map(Number));
 }
 
-const di = [-1,1,0,0];
-const dj = [0,0,-1,1];
-
 let dp = Array.from(Array(n), () => Array(n).fill(1));
 
-const bfs = (i,j) => {
-    let que = [];
-    let check =  Array.from(Array(n), () => Array(n).fill(0));
-    que.push([i,j]);
-    check[i][j] = 1;
+let cells = [];
 
-    while(que.length > 0){
-        tmp = que.shift();
-        const ti = tmp[0];
-        const tj = tmp[1];
-        dp[ti][tj] = Math.max(dp[ti][tj], check[ti][tj]);
+const inRange = (i,j) => {
+    return (i >= 0 && i < n && j >= 0 && j < n);
+} 
 
-        for(let k=0;k<4;k++){
-            let ni = ti + di[k];
-            let nj = tj + dj[k];
+for(let i=0;i<n;i++){
+    for(let j=0;j<n;j++){
+        cells.push([arr[i][j], i, j]);
+    }
+}
 
-            if(ni < 0 || ni >= n || nj < 0 || nj >= n){
-                continue;
-            }
+cells.sort();
 
-            if(arr[ni][nj] > arr[ti][tj] && check[ni][nj] === 0){
-                check[ni][nj] = check[ti][tj] + 1;
-                que.push([ni,nj]);
-            }
+for(let tmp of cells){
+    const di = [-1,1,0,0];
+    const dj = [0,0,-1,1];
+
+    const i = tmp[1];
+    const j = tmp[2];
+
+    for(let k=0;k<4;k++){
+        let ni = i + di[k];
+        let nj = j + dj[k];
+
+        if(inRange(ni,nj) && arr[ni][nj] > arr[i][j]){
+            dp[ni][nj] = Math.max(dp[ni][nj], dp[i][j] + 1);
         }
     }
 }
 
-for(let i=0;i<n;i++){
-    for(let j=0;j<n;j++){
-        bfs(i,j);
-    }
-}
-
 let maxNum = -1;
-
 for(let i=0;i<n;i++){
     for(let j=0;j<n;j++){
         maxNum = Math.max(maxNum, dp[i][j]);
     }
 }
-
 console.log(maxNum);
