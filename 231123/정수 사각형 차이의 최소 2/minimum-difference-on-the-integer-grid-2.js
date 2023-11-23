@@ -42,27 +42,39 @@ for(let i=1;i<n;i++){
 for(let i=1;i<n;i++){
     for(let j=1;j<n;j++){
         let tmp = [];
-        if((dp[i-1][j][0] - dp[i-1][j][1]) < (dp[i][j-1][0] - dp[i][j-1][1])){
-            if(arr[i][j] > arr[i-1][j]){
-                tmp.push(Math.max(arr[i][j], dp[i-1][j][0]));
-                tmp.push(dp[i-1][j][1]);
-            }
-            else {
-                tmp.push(dp[i-1][j][0]);
-                tmp.push(Math.min(arr[i][j], dp[i-1][j][1]));
-            }
+        if(arr[i][j] < dp[i][j-1][1]){
+            tmp.push(dp[i][j-1][0]);
+            tmp.push(arr[i][j]);
+        }
+        else if(arr[i][j] > dp[i][j-1][0]){
+            tmp.push(arr[i][j]);
+            tmp.push(dp[i][j-1][1]);
         }
         else{
-            if(arr[i][j] > arr[i][j-1]){
-                tmp.push(Math.max(arr[i][j], dp[i][j-1][0]));
-                tmp.push(dp[i][j-1][1]);
-            }
-            else {
-                tmp.push(dp[i][j-1][0]);
-                tmp.push(Math.min(arr[i][j], dp[i][j-1][1]));
-            }
+            tmp.push(dp[i][j-1][0]);
+            tmp.push(dp[i][j-1][1]);
         }
-        dp[i][j] = tmp;
+
+        let tmp2 = [];
+        if(arr[i][j] < dp[i-1][j][1]){
+            tmp2.push(dp[i-1][j][0]);
+            tmp2.push(arr[i][j]);
+        }
+        else if(arr[i][j] > dp[i-1][j][0]){
+            tmp2.push(arr[i][j]);
+            tmp2.push(dp[i-1][j][1]);
+        }
+        else{
+            tmp2.push(dp[i-1][j][0]);
+            tmp2.push(dp[i-1][j][1]);
+        }
+
+        if((tmp[0] - tmp[1]) < (tmp2[0] - tmp2[1])){
+            dp[i][j] = tmp;
+        }
+        else{
+            dp[i][j] = tmp2;
+        }
     }
 }
 
