@@ -49,7 +49,7 @@ for(let i=1;i<n;i++){
             }
             else {
                 tmp.push(dp[i-1][j][0]);
-                tmp.push(Math.max(arr[i][j], dp[i-1][j][1]));
+                tmp.push(Math.min(arr[i][j], dp[i-1][j][1]));
             }
         }
         else{
@@ -59,7 +59,7 @@ for(let i=1;i<n;i++){
             }
             else {
                 tmp.push(dp[i][j-1][0]);
-                tmp.push(Math.max(arr[i][j], dp[i][j-1][1]));
+                tmp.push(Math.min(arr[i][j], dp[i][j-1][1]));
             }
         }
         dp[i][j] = tmp;
