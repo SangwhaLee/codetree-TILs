@@ -12,7 +12,12 @@ dp[0] = 0;
 for(let i=1;i<n;i++){
     for(let j=0;j<i;j++){
         if(arr[j] + j >= i){
-            dp[i] = Math.max(dp[i], dp[j] + 1);
+            if(j > 0 && dp[j] > 0){
+                dp[i] = Math.max(dp[i], dp[j] + 1);
+            } 
+            else if(j === 0){
+                dp[i] = dp[j] + 1;
+            }
         }
     }
 }
