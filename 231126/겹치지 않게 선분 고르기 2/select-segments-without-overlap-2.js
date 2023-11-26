@@ -20,7 +20,7 @@ for(let i=0;i<n;i++){
     dp[i] = 1;
     for(let j=0;j<i;j++){
         if(line[i][0] > line[j][1]){
-            dp[j]++;
+            dp[i] = Math.max(dp[i], dp[j]+ 1);
         }
     }
 }
