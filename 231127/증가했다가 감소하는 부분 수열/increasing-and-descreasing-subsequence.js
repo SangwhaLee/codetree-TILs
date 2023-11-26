@@ -36,17 +36,12 @@ for(let i=0;i<n;i++){
     }
 }
 
-if(maxUp > downMax){
-    ans = maxUp;
-}
-else{
-    let tmp = maxUp;
-    for(let i =maxIdx+1;i<n;i++){
-        if(dp_down[i] > dp_down[maxIdx]){
-            tmp = Math.max(tmp, (dp_down[i] - dp_down[maxIdx]) + maxUp);
-        }
+let tmp = maxUp;
+for(let i =maxIdx+1;i<n;i++){
+    if(dp_down[i] > dp_down[maxIdx]){
+        tmp = Math.max(tmp, (dp_down[i] - dp_down[maxIdx]) + maxUp);
     }
-    ans = Math.max(downMax, tmp);
 }
+ans = Math.max(downMax, tmp);
 
 console.log(ans);
