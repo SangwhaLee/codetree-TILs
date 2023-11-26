@@ -6,42 +6,27 @@ let n = Number(input[0]);
 
 let arr = input[1].split(" ").map(Number);
 
-let dp_up = Array(n).fill(1);
-let dp_down = Array(n).fill(1);
-
-for(let i=1;i<n;i++){
-    for(let j=0;j<i;j++){
-        if(arr[i] > arr[j]){
-            dp_up[i] = Math.max(dp_up[j]+1, dp_up[i]);
-        }
-        if(arr[i] < arr[j]){
-            dp_down[i] = Math.max(dp_down[j]+1, dp_down[i]);
-        }
-    }
-}
-
-let maxUp = -1;
-let maxIdx = 0;
-let downMax = -1;
-let downIdx = 0;
+let dp = Array.from(Array(n), () => Array(2).fill(0));
 
 for(let i=0;i<n;i++){
-    if(dp_up[i] > maxUp){
-        maxUp = dp_up[i];
-        maxIdx = i;
+    dp[i][0] = 1;
+    dp[i][1] = 1;
+    for(let j=0;j<i;j++){
+        if(arr[i] > arr[j]){
+            dp[i][0] = Math.max(dp[i][0], dp[j][0] + 1);
+        }
+        if(arr[i] < arr[j]){
+            dp[i][1] = Math.max(dp[i][1], dp[j][1]+ 1);
+        }
     }
-    if(dp_down[i] > downMax){
-        downMax = dp_down[i];
-        downIdx = i;
-    }
+    dp[i][1] = Math.max(dp[i][1], dp[i][0]);
 }
 
-let tmp = maxUp;
-for(let i =maxIdx+1;i<n;i++){
-    if(dp_down[i] > dp_down[maxIdx]){
-        tmp = Math.max(tmp, (dp_down[i] - dp_down[maxIdx]) + maxUp);
+let ans = 0;
+for(let i=0;i<n;i++){
+    for(let j =0;j<2;j++){
+        ans = Math.max(ans, dp[i][j]);
     }
 }
-ans = Math.max(downMax, tmp);
 
 console.log(ans);
