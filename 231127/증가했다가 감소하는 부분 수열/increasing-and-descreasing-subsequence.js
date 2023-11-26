@@ -15,7 +15,7 @@ let chance = Array(n).fill(true);
 for(let i=1;i<n;i++){
     for(let j=0;j<i;j++){
         if(arr[i] > arr[j]){
-            if(way[j] !== 1){
+            if(way[j] !== -1){
                 dp[i] = Math.max(dp[i], dp[j] + 1);
                 way[i] = 1;
             }
