@@ -14,9 +14,10 @@ line.sort((a,b) => {
     return a[0] - b[0];
 });
 
-let dp = Array(n).fill(1);
+let dp = Array(n).fill(0);
 
 for(let i=0;i<n;i++){
+    dp[i] = 1;
     for(let j=0;j<i;j++){
         if(line[i][0] > line[j][1]){
             dp[j]++;
