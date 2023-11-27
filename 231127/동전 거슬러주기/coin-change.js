@@ -23,4 +23,11 @@ for(let i=1;i<=m;i++){
     }
 }
 
-console.log(dp[m]);
+let ans = 0;
+if(dp[m] === Number.MAX_SAFE_INTEGER){
+    ans = -1;
+}
+else{
+    ans = dp[m];
+}
+console.log(ans);
