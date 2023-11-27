@@ -14,6 +14,7 @@ for(let i=1;i<=n;i++){
     if(i >= 5){
         dp[i] += dp[i-5];
     }
+    dp[i] = dp[i]%10007;
 }
 
-console.log(dp[n]%10007);
+console.log(dp[n]);
