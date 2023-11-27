@@ -14,16 +14,10 @@ let dp = Array(m+1).fill(max);
 
 dp[0] = 0;
 
-for(let i=1;i<m+1;i++){
-    for(let j=0;j<n;j++){
-        if(dp[i-arr[j]] === max){
-            continue;
-        }
-        if(i - arr[j] === arr[j]){
-            continue;
-        }
-        if(i>=arr[j]){
-            dp[i] = Math.min(dp[i], dp[i-arr[j]] + 1);
+for(let i=0;i<n;i++){
+    for(let j=m;j>=0;j--){
+        if(j>=arr[i]){
+            dp[j] = Math.min(dp[j], dp[j - arr[i]] + 1);
         }
     }
 }
