@@ -24,7 +24,7 @@ for(let i=1;i<=m;i++){
     }
 }
 
-ans = dp[m];
+let ans = dp[m];
 if(ans === min){
     ans = -1;
 }
