@@ -15,19 +15,16 @@ let dp = Array(m+1).fill(min);
 dp[0] = 0;
 
 for(let i=0;i<n;i++){
-    for(let j=m;j>=0;j--){
+    for(let j=m;j>0;j--){
         if(j >= arr[i]){
             dp[j] = Math.max(dp[j], dp[j - arr[i]] + 1);
         }
     }
 }
 
-let ans = "";
-
-if(dp[m] === min){
-    ans = "No";
+if(dp[m] <= 0){
+    console.log("No");
 }
 else{
-    ans = "Yes";
+    console.log("Yes");
 }
-console.log(ans);
