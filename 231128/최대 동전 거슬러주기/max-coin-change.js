@@ -24,4 +24,8 @@ for(let i=1;i<=m;i++){
     }
 }
 
-console.log(dp[m]);
+ans = dp[m];
+if(ans === min){
+    ans = -1;
+}
+console.log(ans);
