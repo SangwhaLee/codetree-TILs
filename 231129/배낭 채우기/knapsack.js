@@ -15,20 +15,24 @@ for(let i=1;i<=n;i++){
     value.push(tmp[1]);
 }
 
-const min = Number.MIN_SAFE_INTEGER;
-
-let dp = Array(m+1).fill(min);
+let dp = Array(m+1).fill(0);
 
 dp[0] = 0;
 
-for(let i=1;i<m+1;i++){
-    for(let j=0;j<n;j++){
-        if(dp[i - weight[j]] === min) continue;
-
-        if(i >= weight[j]){
-            dp[i] = Math.max(dp[i], dp[i - weight[j]] + value[j]);
+for(let i=0;i<n;i++){
+    for(let j=m;j>0;j--){
+        if(j >= weight[i]){
+            dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);
         }
     }
 }
+
+// for(let i=1;i<m+1;i++){
+//     for(let j=0;j<n;j++){
+//         if(i >= weight[j]){
+//             dp[i] = Math.max(dp[i], dp[i - weight[j]] + value[j]);
+//         }
+//     }
+// }
 
 console.log(dp[m]);
