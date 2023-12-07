@@ -7,9 +7,16 @@ maps = dict()
 answer = 0
 
 for n in nums:
-    if n not in maps:
-        maps[k-n] = 1
+    if k - n in maps:
+        answer += maps[k-n]
+        if n in maps:
+            maps[n] += 1
+        else:
+            maps[n] = 1
     else:
-        answer += maps[n]
+        if n in maps:
+            maps[n] += 1
+        else:
+            maps[n] = 1
 
 print(answer)
