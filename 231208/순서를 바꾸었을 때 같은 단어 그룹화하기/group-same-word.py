@@ -1,22 +1,25 @@
 n = int(input())
 
-dics = []
+count = dict()
 
 for _ in range(n):
-    tmp = dict()
-    sen = input()
-    for s in sen:
-        if s not in tmp:
-            tmp[s] = 1
-        else:
-            tmp[s] += 1
-    dics.append(tmp)
+    inp = input()
 
-answer = 0
+    inp = sorted(inp)
 
-for i in range(len(dics)):
-    for j in range(i+1, len(dics)):
-        if dics[i] == dics[j]:
-            answer += 1
+    string = ""
+    for elem in inp:
+        string += elem
+    
+    if string in count:
+        count[string] += 1
+    else:
+        count[string] = 1
+    
+ans = 0
 
-print(answer)
+for key, value in count.items():
+    if ans < value:
+        ans = value
+
+print(ans)
