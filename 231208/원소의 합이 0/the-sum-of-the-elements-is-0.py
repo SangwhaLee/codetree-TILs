@@ -18,11 +18,9 @@ for i in range(n):
 
 need = dict()
 
-for ab in AB:
+for ab in AB.keys():
     if -ab not in need:
-        need[-ab] = 1
-    else:
-        need[-ab] += 1
+        need[-ab] = AB[ab]
 
 for i in range(n):
     for j in range(n):
