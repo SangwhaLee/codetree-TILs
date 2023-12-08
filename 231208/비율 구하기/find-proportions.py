@@ -11,6 +11,6 @@ for _ in range(n):
         word[tmp] += 1
 
 for w in sorted(word.keys()):
-    tmp = round((100/n) * word[w], 5)
+    tmp = round((100/n) * word[w], 4)
     format_tmp = "{:.4f}".format(tmp)
     print(w, format_tmp)
