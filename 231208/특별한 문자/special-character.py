@@ -8,7 +8,13 @@ for w in word:
     else:
         count[w] += 1
 
+ans = []
 
 for k,v in count.items():
     if v == 1:
-        print(k)
+        ans.append(k)
+
+if len(ans) == 0:
+    print("None")
+else:
+    print(ans[0])
