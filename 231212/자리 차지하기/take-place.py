@@ -13,7 +13,7 @@ ans = 0
 
 for a in arr:
     ai = s.bisect_left(a)
-    if s.bisect_left(a) == 0 and s[0] > a:
+    if len(s) == 0 or (s.bisect_left(a) == 0 and s[0] > a):
         break
     s.remove(s[ai])
     ans += 1
