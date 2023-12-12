@@ -11,7 +11,9 @@ print(minlen)
 
 for i in range(1,len(arr)):
     if s.bisect_right(arr[i]) == len(s):
-        print(min(abs(s[s.bisect_right(arr[i])-1] - arr[i]), minlen))
+        minlen = min(abs(s[s.bisect_right(arr[i])-1] - arr[i]), minlen)
+        print(minlen)
     else:
-        print(min(abs(s[s.bisect_right(arr[i])-1] - arr[i]), abs(s[s.bisect_right(arr[i])] - arr[i]), minlen))
+        minlen = min(abs(s[s.bisect_right(arr[i])-1] - arr[i]), abs(s[s.bisect_right(arr[i])] - arr[i]), minlen)
+        print(minlen)
     s.add(arr[i])
