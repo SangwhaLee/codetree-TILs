@@ -7,21 +7,14 @@ pq = []
 
 for _ in range(n):
     x,y = map(int,input().split())
-    heapq.heappush(pq,(x,y))
+    heapq.heappush(pq,(x+y,x,y))
 
 for _ in range(m):
-    x, y = heapq.heappop(pq)
+    _,x, y = heapq.heappop(pq)
     x = x + 2
     y = y + 2
-    heapq.heappush(pq,(x,y))
+    heapq.heappush(pq,(x+y,x,y))
 
+_,x,y = heapq.heappop(pq)
 
-ans = sys.maxsize
-min_x, min_y = 0, 0
-
-for x,y in pq:
-    if x+y < ans:
-        ans = x+y
-        min_x, min_y = x, y
-
-print(min_x, min_y)
+print(x, y)
